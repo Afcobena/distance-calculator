@@ -1,9 +1,12 @@
-import React from 'react'
+import ConverterCard from '../../components/cards/ConverterCard/ConverterCard'
+import SavedResultsCard from '../../components/cards/SavedResultsCard/SavedResultsCard'
 
 function Home() {
   return (
     <div className='home'>
-        <h1>Home</h1>
+        <ConverterCard />
+
+        <SavedResultsCard />
     </div>
   )
 }
