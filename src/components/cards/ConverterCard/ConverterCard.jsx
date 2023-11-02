@@ -3,22 +3,30 @@ import icon from "../../../assets/images/icon.png";
 
 function ConverterCard() {
   const [category, setCategory] = useState("");
-  const [text, setText] = useState("");
+  const [amount, setAmount] = useState(0);
   const [unit, setUnit] = useState("");
+  const [result, setResult] = useState(0);
 
-/*   useEffect(() => {
-    handleSpanUnit()
-  },[]) */
+  useEffect(() => {
+    handleResult(category, amount)
+  }, [category, amount])
 
 
+  // HANDLE THE CATEGORY STATE WHEN HAS BEEN CHANGED
   const handleCategoryChange = (event) => {
     const newCategoryState = event.target.value
     setCategory(newCategoryState)
-    handleSpanUnit(newCategoryState)
+    handleUnit(newCategoryState)
   }
-  const handleTextChange = (event) => setText(event.target.value);
 
-  const handleSpanUnit = (category) => {
+  // HANDLE THE AMOUNT STATE WHEN HAS BEEN MODIFIED
+  const handleAmountChange = (event) => {
+    const newAmountState = event.target.value
+    setAmount(newAmountState)
+  }
+  
+  // HANDLE THE UNIT STATE WHEN THE CATEGORY CHANGE
+  const handleUnit = (category) => {
     switch(category) {
       case "kmMil":
         setUnit("km")
@@ -44,8 +52,34 @@ function ConverterCard() {
     }
   } 
 
-  console.log("category selected:", category);
-  console.log("unit selected:", unit);
+  // FUNCTION TO OPERATE BETWEEN THE DIFERENTS CONVERTIONS
+  const handleResult = (category, amount) => {
+    switch(category) {
+      case "kmMil":
+        setResult(amount * 0.62)
+        break;
+      case "milKm":
+        setResult(amount * 1.60)
+        break;
+      case "mFt":
+        setResult(amount * 3.28)
+        break;
+      case "ftM":
+        setResult(amount * 0.39)
+        break;
+      case "cmIn":
+        setResult(amount * 0.39)
+        break;
+      case "inCm":
+        setResult(amount * 2.54)
+        break;
+      default:
+        setResult(0)
+        break;
+    }
+  }
+
+
 
   return (
     <div className="converter">
@@ -70,13 +104,18 @@ function ConverterCard() {
 
           <div className="converter__form--row1__right">
             <input
-              type="text"
-              name="text"
-              onChange={handleTextChange}
-              value={text}
+              type="number"
+              name="number"
+              onChange={handleAmountChange}
+              value={amount}
             />
             <span>{unit}</span>
           </div>
+        </div>
+
+        <div className="converter__form--row2">
+          <button>♡</button>
+          <span>{result}</span>
         </div>
       </div>
     </div>
