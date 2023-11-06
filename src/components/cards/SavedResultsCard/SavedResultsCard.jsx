@@ -6,10 +6,10 @@ function SavedResultsCard() {
   return (
     <div className="saved--results">
       {localData === null ? (
-        <p>Saved Results</p>
+        <p>saved</p>
       ) : (
         <>
-          <p>Saved Results</p>
+          <p>saved</p>
 
           {localData.map((data) => {
             return (

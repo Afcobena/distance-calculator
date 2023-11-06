@@ -1,13 +1,15 @@
-import React from 'react'
-import icon from '../../../assets/images/icon.png'
+import React from "react";
+import icon from "../../../assets/images/icon.png";
 
 function Navbar() {
   return (
-    <div>
-      <img src={icon} alt="" />
-      <span>unit converter</span>
+    <div className="navbar">
+      <div className="navbar--content">
+        <img src={icon} alt="two ways arrows" />
+        <span>unit converter</span>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
