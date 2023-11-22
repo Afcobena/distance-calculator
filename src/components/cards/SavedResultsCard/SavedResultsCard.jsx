@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 
-function SavedResultsCard({ saveResults, setSaveResults }) {
+import deleteIcon from "../../../assets/images/deleteIcon.svg";
 
+function SavedResultsCard({ saveResults, setSaveResults }) {
   useEffect(() => {
     getData();
-
   }, []);
-
 
   console.log("savedRESULTS", saveResults);
   /* console.log("DATA", data); */
@@ -16,15 +15,11 @@ function SavedResultsCard({ saveResults, setSaveResults }) {
   };
 
   const handleDeleteData = (id) => {
-    const filteredData = saveResults.filter(data => data.id !== id);
-
+    const filteredData = saveResults.filter((data) => data.id !== id);
 
     localStorage.setItem("savedResult", JSON.stringify(filteredData));
     setSaveResults(filteredData);
-
-
   };
-
 
   return (
     <div className="saved--results">
@@ -34,20 +29,28 @@ function SavedResultsCard({ saveResults, setSaveResults }) {
         <>
           <p>saved</p>
 
-          {saveResults.map((data) => {
-            return (
-              <div key={data.id} className="saved--results__card">
-                <p>
-                  {data.amount} {data.unit} {data.result} {data.unitResult}
-                </p>
-                <button onClick={() => handleDeleteData(data.id)}>Delete</button>
+          <div className="saved--results__container">
+            {saveResults.map((data) => {
+              return (
+                <div key={data.id} className="saved--results__container--card">
+                  <div className="saved--results__container--card__info">
+                    <p>
+                      {data.amount} {data.unit} → {data.result} {data.unitResult}
+                    </p>
+                  </div>
 
-                <div>
-                  <p></p>
+                  <div className="saved--results__container--card__button">
+                    <img
+                      onClick={() => handleDeleteData(data.id)}
+                      src={deleteIcon}
+                      alt="x delete button"
+                    />
+                  </div>
+
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </>
       )}
     </div>

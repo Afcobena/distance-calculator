@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
 
 .converter {
   margin-top: 51px;
@@ -44,7 +44,7 @@
           width: 254px;
           height: 32px;
           margin-right: 38px;
-          
+
           font-family: "Poppins", sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -55,33 +55,31 @@
             align-items: flex-end;
             cursor: pointer;
 
-              img {
-                  width: 15.5px;
-                  height: 13.5px;
-                }
+            img {
+              width: 15.5px;
+              height: 13.5px;
+            }
           }
-          
-            
-            &--selection {
-                width: 218px;
-                border-bottom: 2px solid #ffffff;
+
+          &--selection {
+            width: 218px;
+            border-bottom: 2px solid #ffffff;
           }
         }
 
         &__right {
           width: 261px;
           height: 32px;
-        margin-left: 38px;
+          margin-left: 38px;
 
           display: flex;
           align-items: flex-end;
           gap: 12px;
 
-          
           &--input {
             text-align: end;
             width: 221px;
-              
+
             border-bottom: 2px solid #ffffff;
           }
 
@@ -101,23 +99,18 @@
         margin-top: 24px;
         margin-left: 38px;
 
-
-
         &__button {
-
-            button {
-                width: 20px;
-            }
+          button {
+            width: 20px;
+          }
         }
-    
-
 
         &__results {
-            display: flex;
-            align-items: flex-end;
-            gap: 12px;
-            width: 112px;
-            position: relative;
+          display: flex;
+          align-items: flex-end;
+          gap: 12px;
+          width: 112px;
+          position: relative;
 
           &--numbers {
             font-size: 24px;

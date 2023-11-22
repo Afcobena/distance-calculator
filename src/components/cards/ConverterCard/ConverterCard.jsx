@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import icon from "../../../assets/images/iconWhite.png";
-import heartIcon from "../../../assets/images/heartIcon.png";
+import icon from "../../../assets/images/iconWhite.svg";
+import heartIcon from "../../../assets/images/heartIcon.svg";
 import SavedResultsCard from "../SavedResultsCard/SavedResultsCard";
 
 function ConverterCard() {

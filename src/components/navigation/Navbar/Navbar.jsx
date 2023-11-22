@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../../../assets/images/icon.png";
+import icon from "../../../assets/images/icon.svg";
 
 function Navbar() {
   return (
