@@ -21,7 +21,7 @@ function ConverterCard() {
     const newCategoryState = event.target.value;
     setCategory(newCategoryState);
     handleUnit(newCategoryState);
-    handleButtonConvert(newCategoryState)
+    handleButtonConvert(newCategoryState);
   };
 
   // HANDLE THE AMOUNT STATE WHEN HAS BEEN MODIFIED
@@ -64,6 +64,7 @@ function ConverterCard() {
     }
   };
 
+  // FUNCTION TO CHANGE THE REVERSE FORMULA
   const handleButtonConvert = (category) => {
     switch (category) {
       case "kmMil":
@@ -96,47 +97,7 @@ function ConverterCard() {
         setUnitResult("miles");
         break;
     }
-  }
-
-  /*   const handleButtonConvert = (category) => {
-    switch (category) {
-      case "kmMil":
-        setCategory("milKm");
-        setUnit("mil");
-        setUnitResult("kilometers");
-        break;
-      case "milKm":
-        setCategory("kmMil");
-        setUnit("km");
-        setUnitResult("miles");
-        break;
-      case "mFt":
-        setCategory("ftM");
-        setUnit("ft");
-        setUnitResult("meters");
-        break;
-      case "ftM":
-        setCategory("mFt");
-        setUnit("m");
-        setUnitResult("feets");
-        break;
-      case "cmIn":
-        setCategory("inCm");
-        setUnit("in");
-        setUnitResult("centimeters");
-        break;
-      case "inCm":
-        setCategory("cmIn");
-        setUnit("cm");
-        setUnitResult("inches");
-        break;
-      default:
-        setCategory("kmMil");
-        setUnit("km");
-        setUnitResult("miles");
-        break;
-    }
-  } */
+  };
 
   // FUNCTION TO OPERATE BETWEEN THE DIFERENTS CONVERTIONS
   const handleResult = (category, amount) => {
@@ -167,20 +128,20 @@ function ConverterCard() {
 
   // FUNCTION TO SLICE THE RESULT
   const handleResultSliced = (amount, modif) => {
-    
-    const newResultSliced = ((amount * modif).toString().slice(0,5))
+    const newResultSliced = (amount * modif).toString().slice(0, 5);
     // habria que recorrer el string
 
-    if (newResultSliced.slice(0,1).includes(".")) {
-      setResult((amount * modif).toString().slice(0,4))
+    if (newResultSliced.slice(0, 1).includes(".")) {
+      setResult((amount * modif).toString().slice(0, 4));
     } else {
-      setResult((amount * modif).toString().slice(0,5))
+      setResult((amount * modif).toString().slice(0, 5));
     }
-  }
+  };
 
-  const localId = new Date();
-
+  
   const handleSaveResults = () => {
+    const localId = new Date();
+
     const newObjectResult = {
       id: localId,
       amount: amount,
@@ -189,11 +150,11 @@ function ConverterCard() {
       unitResult: unitResult,
     };
 
-    saveResults.push(newObjectResult);
-    localStorage.setItem("savedResult", JSON.stringify(saveResults));
+    const updatedSaveResults = [...saveResults, newObjectResult];
+    localStorage.setItem("savedResult", JSON.stringify(updatedSaveResults));
+    setSaveResults(updatedSaveResults);
 
     const localData = JSON.parse(localStorage.getItem("savedResult"));
-
     setResultsSaved(localData);
   };
 
@@ -221,8 +182,11 @@ function ConverterCard() {
                 <option value="inCm">in → cm</option>
               </select>
               <div className="converter--calculator__form--row1__left--image">
-                <img  src={icon} alt="two ways arrows" />  
-                <button onClick={handleButtonConvert}>Convert</button>
+                <img
+                  onClick={() => handleButtonConvert(category)}
+                  src={icon}
+                  alt="two ways arrows"
+                />
               </div>
             </div>
 
@@ -241,21 +205,28 @@ function ConverterCard() {
 
           <div className="converter--calculator__form--row2">
             <div className="converter--calculator__form--row2__button">
-            <img onClick={handleSaveResults} src={heartIcon} alt="heart icon to save results" />  
+              <img
+                onClick={handleSaveResults}
+                src={heartIcon}
+                alt="heart icon to save results"
+              />
             </div>
             <div className="converter--calculator__form--row2__results">
-            <span className="converter--calculator__form--row2__results--numbers">
-              {result}
-            </span>
-            <span className="converter--calculator__form--row2__results--units">
-              {unitResult}
-            </span>
+              <span className="converter--calculator__form--row2__results--numbers">
+                {result}
+              </span>
+              <span className="converter--calculator__form--row2__results--units">
+                {unitResult}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      <SavedResultsCard />
+      <SavedResultsCard 
+      saveResults={saveResults}
+      setSaveResults={setSaveResults}
+      />
     </div>
   );
 }
