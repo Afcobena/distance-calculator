@@ -1,10 +1,15 @@
+@use "../../../styles/abstracts/mixins" as *;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
 
 .saved--results {
   color: #676767;
 
-  & > p {
+  @include seven__hundred {
+    width: 286px;
+    margin-top: 43px;
+  }
 
+  & > p {
     margin-bottom: 48px;
     font-family: "Poppins", sans-serif;
     font-size: 16px;
@@ -17,6 +22,12 @@
     gap: 16px;
     grid-auto-flow: row;
 
+    @include seven__hundred {
+      width: fit-content;
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+    }
+
     &--card {
       display: flex;
       justify-content: space-between;
@@ -27,20 +38,22 @@
       border-radius: 10px;
       background-color: #e3e3e3;
 
-      &__info {
+      @include seven__hundred {
+        width: 278px;
+      }
 
+      &__info {
         margin-left: 18px;
         width: 70%;
 
         p {
-            font-family: "Poppins", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
+          font-family: "Poppins", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
         }
       }
 
       &__button {
-
         display: flex;
         justify-content: flex-end;
         width: 10%;
