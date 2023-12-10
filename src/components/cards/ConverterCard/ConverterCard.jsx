@@ -138,7 +138,7 @@ function ConverterCard() {
     }
   };
 
-  
+  // FUNCTION TO SAVE THE RESULTS
   const handleSaveResults = () => {
     const localId = new Date();
 

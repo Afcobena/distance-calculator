@@ -3,17 +3,19 @@ import { useEffect } from "react";
 import deleteIcon from "../../../assets/images/deleteIcon.svg";
 
 function SavedResultsCard({ saveResults, setSaveResults }) {
+
   useEffect(() => {
     getData();
   }, []);
 
-  console.log("savedRESULTS", saveResults);
-  /* console.log("DATA", data); */
+  // FUNCTION TO GET THE RESULTS
   const getData = () => {
     const localData = JSON.parse(localStorage.getItem("savedResult"));
     setSaveResults(localData);
   };
 
+
+  // FUNCTION TO FILTER AND SAVE THE NEW DATA
   const handleDeleteData = (id) => {
     const filteredData = saveResults.filter((data) => data.id !== id);
 
